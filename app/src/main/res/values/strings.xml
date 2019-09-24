@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Billy</string>
+
+    <!--    Main Activity View-->
+    <string name="title_add_billis">Billis</string>
+    <string name="b_add_billi">Add +</string>
+    <string name="et_billi_name">Billi Name</string>
+    <string name="title_add_dish">Add Dish</string>
+    <string name="b_add_dish">Add Dish</string>
+    <string name="et_dish_name">Dish Name</string>
+    <string name="et_dish_price">Price</string>
+    <string name="et_dish_tax">Tax (12% default)</string>
+    <string name="dish_eaten_by">Dish Eaten By</string>
+    <string name="b_get_split">Get Split</string>
+
+
+    <!--    Single Billi List Item-->
+    <string name="billi_name">Billi Name</string>
+
+    <!--    Single Split Details Item-->
+    <string name="billi_split_amount">560</string>
+    <string name="title_food_eaten">Food Eaten:</string>
+    <string name="billi_food_eaten">Chicken (560)</string>
+
+    <!--    Split Activity View-->
+    <string name="title_split_details">Split Details</string>
+
+</resources>

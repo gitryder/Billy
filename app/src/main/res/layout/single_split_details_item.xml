@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/billi_name"
+        style="@style/SubHeaderTextTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/billi_name"
+        android:textColor="@color/primaryTextColor"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/billi_split_amount"
+        style="@style/SecondaryTextTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/billi_split_amount"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/title_food_eaten"
+        style="@style/SecondaryTextTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/title_food_eaten"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/billi_food_eaten"
+        style="@style/SecondaryTextTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/billi_food_eaten" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:background="?android:attr/listDivider" />
+
+</LinearLayout>
