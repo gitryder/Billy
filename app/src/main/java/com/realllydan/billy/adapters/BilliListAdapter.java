@@ -10,14 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.realllydan.billy.R;
+import com.realllydan.billy.models.Billi;
 
 import java.util.ArrayList;
 
 public class BilliListAdapter extends RecyclerView.Adapter<BilliListAdapter.ViewHolder> {
 
     private static final String TAG = "BilliListAdapter";
-
-    //vars
     private ArrayList<String> mBilliList;
 
     public BilliListAdapter(ArrayList<String> mBilliList) {
@@ -46,11 +45,15 @@ public class BilliListAdapter extends RecyclerView.Adapter<BilliListAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView billiName;
+        private TextView billiName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             billiName = itemView.findViewById(R.id.billi_name);
+        }
+
+        public void bindViews (Billi billi) {
+            billiName.setText(billi.getName());
         }
     }
 }

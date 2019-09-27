@@ -167,9 +167,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mBilliList.add(mFoodEaten.get(billiName));
         }
 
-        Intent splitActivityIntent = new Intent(MainActivity.this, SplitActivity.class);
-        splitActivityIntent.putParcelableArrayListExtra("mBilliList", mBilliList);
-        startActivity(splitActivityIntent);
+        startActivity(SplitActivity.getStartIntent(this, mBilliList));
     }
 
     private String getStringFromEditText(EditText editText) {

@@ -5,9 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.realllydan.billy.Constants;
 import com.realllydan.billy.R;
 import com.realllydan.billy.adapters.BilliListAdapter;
 import com.realllydan.billy.adapters.SplitListAdapter;
@@ -23,14 +27,20 @@ public class SplitActivity extends AppCompatActivity {
     //vars
     private ArrayList<Billi> mBilliList = new ArrayList<>();
 
+    public static Intent getStartIntent(Context context,  ArrayList<Billi> billiList) {
+        Intent intent = new Intent(context, SplitActivity.class);
+        intent.putParcelableArrayListExtra(Constants.EXTRAS_BILLI_LIST, billiList);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_split);
         Log.d(TAG, "onCreate: called");
 
-        if (getIntent().hasExtra("mBilliList")) {
-            mBilliList = getIntent().getExtras().getParcelableArrayList("mBilliList");
+        if (getIntent().hasExtra(Constants.EXTRAS_BILLI_LIST)) {
+            mBilliList = getIntent().getExtras().getParcelableArrayList(Constants.EXTRAS_BILLI_LIST);
         }
 
         initToolbar();
