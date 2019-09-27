@@ -39,9 +39,7 @@ public class SplitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_split);
         Log.d(TAG, "onCreate: called");
 
-        if (getIntent().hasExtra(Constants.EXTRAS_BILLI_LIST)) {
-            mBilliList = getIntent().getExtras().getParcelableArrayList(Constants.EXTRAS_BILLI_LIST);
-        }
+        mBilliList = getIntent().getExtras().getParcelableArrayList(Constants.EXTRAS_BILLI_LIST);
 
         initToolbar();
         initRecyclerView();
