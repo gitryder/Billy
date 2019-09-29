@@ -1,4 +1,4 @@
-package com.realllydan.billy.adapters;
+package com.realllydan.billy.data.adapters;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.realllydan.billy.R;
-import com.realllydan.billy.models.Billi;
+import com.realllydan.billy.data.models.PersonWithFood;
 
 import java.util.ArrayList;
 
@@ -19,10 +19,10 @@ public class SplitListAdapter extends RecyclerView.Adapter<SplitListAdapter.View
     private static final String TAG = "SplitListAdapter";
 
     //vars
-    private ArrayList<Billi> mBilliList;
+    private ArrayList<PersonWithFood> mPersonWithFoodList;
 
-    public SplitListAdapter(ArrayList<Billi> mBilliList) {
-        this.mBilliList = mBilliList;
+    public SplitListAdapter(ArrayList<PersonWithFood> mPersonWithFoodList) {
+        this.mPersonWithFoodList = mPersonWithFoodList;
     }
 
     @NonNull
@@ -36,14 +36,14 @@ public class SplitListAdapter extends RecyclerView.Adapter<SplitListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
 
-        holder.billiName.setText(mBilliList.get(position).getName());
-        holder.billiAmount.setText("₹" + mBilliList.get(position).getSplitCost());
-        holder.billiFoodEaten.setText(mBilliList.get(position).getDishesEatenAsString());
+        holder.billiName.setText(mPersonWithFoodList.get(position).getName());
+        holder.billiAmount.setText("₹" + mPersonWithFoodList.get(position).getSplitCost());
+        holder.billiFoodEaten.setText(mPersonWithFoodList.get(position).getFoodEatenAsString());
     }
 
     @Override
     public int getItemCount() {
-        return mBilliList.size();
+        return mPersonWithFoodList.size();
     }
 
 
@@ -53,9 +53,9 @@ public class SplitListAdapter extends RecyclerView.Adapter<SplitListAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            billiName = itemView.findViewById(R.id.billi_name);
-            billiAmount = itemView.findViewById(R.id.billi_split_amount);
-            billiFoodEaten = itemView.findViewById(R.id.billi_food_eaten);
+            billiName = itemView.findViewById(R.id.person_name);
+            billiAmount = itemView.findViewById(R.id.person_split_amount);
+            billiFoodEaten = itemView.findViewById(R.id.person_food_eaten);
         }
     }
 }

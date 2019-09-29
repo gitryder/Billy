@@ -1,4 +1,4 @@
-package com.realllydan.billy.adapters;
+package com.realllydan.billy.data.adapters;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,23 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.realllydan.billy.R;
-import com.realllydan.billy.models.Billi;
 
 import java.util.ArrayList;
 
-public class BilliListAdapter extends RecyclerView.Adapter<BilliListAdapter.ViewHolder> {
+public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.ViewHolder> {
 
-    private static final String TAG = "BilliListAdapter";
-    private ArrayList<String> mBilliList;
+    private static final String TAG = "PersonListAdapter";
+    private ArrayList<String> mPersonWithOrderedFoodList;
 
-    public BilliListAdapter(ArrayList<String> mBilliList) {
-        this.mBilliList = mBilliList;
+    public PersonListAdapter(ArrayList<String> mPersonWithOrderedFoodList) {
+        this.mPersonWithOrderedFoodList = mPersonWithOrderedFoodList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_billi_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_person_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -34,26 +33,22 @@ public class BilliListAdapter extends RecyclerView.Adapter<BilliListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
 
-        holder.billiName.setText(mBilliList.get(position));
+        holder.personName.setText(mPersonWithOrderedFoodList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mBilliList.size();
+        return mPersonWithOrderedFoodList.size();
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView billiName;
+        private TextView personName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            billiName = itemView.findViewById(R.id.billi_name);
-        }
-
-        public void bindViews (Billi billi) {
-            billiName.setText(billi.getName());
+            personName = itemView.findViewById(R.id.person_name);
         }
     }
 }
