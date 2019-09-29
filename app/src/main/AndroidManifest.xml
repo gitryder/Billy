@@ -10,11 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.split.SplitActivity"
-            android:parentActivityName=".ui.main.MainActivity"/>
+        <activity
+            android:name=".ui.split.SplitActivity"
+            android:parentActivityName=".ui.main.MainActivity" />
 
         <activity
             android:name=".ui.main.MainActivity"
+            android:configChanges="orientation"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

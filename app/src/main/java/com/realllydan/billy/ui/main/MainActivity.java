@@ -1,6 +1,7 @@
 package com.realllydan.billy.ui.main;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -94,14 +96,12 @@ public class MainActivity extends AppCompatActivity
                 mainActivityPresenter.navigateToSplitActivity();
             }
         });
-
-
     }
 
     private void initToolbar() {
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle(getString(R.string.title_add_persons));
+        getSupportActionBar().setTitle(getString(R.string.app_name));
     }
 
     private void initRecyclerView() {

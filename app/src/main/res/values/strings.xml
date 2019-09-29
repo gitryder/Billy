@@ -2,7 +2,6 @@
     <string name="app_name">Bill-y</string>
 
     <!--    Main Activity View-->
-    <string name="title_add_persons">Persons</string>
     <string name="b_add_person">Add +</string>
     <string name="et_person_name">Person Name</string>
     <string name="title_add_food">Add Food</string>
