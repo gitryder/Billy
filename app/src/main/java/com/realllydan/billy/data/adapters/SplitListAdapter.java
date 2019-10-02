@@ -13,15 +13,16 @@ import com.realllydan.billy.R;
 import com.realllydan.billy.data.models.PersonWithFood;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SplitListAdapter extends RecyclerView.Adapter<SplitListAdapter.ViewHolder> {
 
     private static final String TAG = "SplitListAdapter";
 
     //vars
-    private ArrayList<PersonWithFood> mPersonWithFoodList;
+    private List<PersonWithFood> mPersonWithFoodList;
 
-    public SplitListAdapter(ArrayList<PersonWithFood> mPersonWithFoodList) {
+    public SplitListAdapter(List<PersonWithFood> mPersonWithFoodList) {
         this.mPersonWithFoodList = mPersonWithFoodList;
     }
 

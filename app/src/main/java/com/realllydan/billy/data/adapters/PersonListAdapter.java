@@ -12,14 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.realllydan.billy.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.ViewHolder> {
 
     private static final String TAG = "PersonListAdapter";
-    private ArrayList<String> mPersonWithOrderedFoodList;
+    private List<String> mPersonWithOrderedFoodList = new ArrayList<>();
 
-    public PersonListAdapter(ArrayList<String> mPersonWithOrderedFoodList) {
-        this.mPersonWithOrderedFoodList = mPersonWithOrderedFoodList;
+    public PersonListAdapter() {
+    }
+
+    public void updateListWithAddedData(List<String> mPersonWithOrderedFoodList) {
+        this.mPersonWithOrderedFoodList.clear();
+        this.mPersonWithOrderedFoodList.addAll(mPersonWithOrderedFoodList);
+        notifyDataSetChanged();
     }
 
     @NonNull

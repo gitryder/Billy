@@ -1,14 +1,12 @@
 package com.realllydan.billy.ui.main;
 
-import android.widget.EditText;
-
 import com.realllydan.billy.data.models.Food;
+import com.realllydan.billy.data.models.PersonWithFood;
+
+import java.util.List;
 
 public interface MainActivityView {
-
-    void addNewPerson(String personName);
-    void addFoodToPerson(Food food, String personName);
-    void clearInputFields(EditText... editTexts);
-    void navigateToSplitActivity();
+    void updateDataAdapters(List<String> mPersonNamesList);
+    void navigateToSplitActivity(List<PersonWithFood> mPersonWithFoodList);
 
 }

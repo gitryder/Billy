@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 
 import com.realllydan.billy.R;
@@ -15,17 +16,16 @@ import com.realllydan.billy.data.adapters.SplitListAdapter;
 import com.realllydan.billy.data.models.PersonWithFood;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SplitActivity extends AppCompatActivity {
 
     private static final String TAG = "SplitActivity";
-
     public static final String EXTRAS_PERSON_LIST = "person_list";
-    private ArrayList<PersonWithFood> mPersonWithFoodList = new ArrayList<>();
 
-    public static Intent getStartIntent(Context context,  ArrayList<PersonWithFood> personWithFoodList) {
+    public static Intent getStartIntent(Context context,  List<PersonWithFood> personWithFoodList) {
         Intent intent = new Intent(context, SplitActivity.class);
-        intent.putParcelableArrayListExtra(EXTRAS_PERSON_LIST, personWithFoodList);
+        intent.putParcelableArrayListExtra(EXTRAS_PERSON_LIST, (ArrayList<? extends Parcelable>) personWithFoodList);
         return intent;
     }
 
@@ -35,14 +35,13 @@ public class SplitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_split);
         Log.d(TAG, "onCreate: called");
 
+        initToolbar();
+
         try {
-            mPersonWithFoodList = getIntent().getExtras().getParcelableArrayList(EXTRAS_PERSON_LIST);
+            initRecyclerView(getIntent().getExtras().<PersonWithFood>getParcelableArrayList(EXTRAS_PERSON_LIST));
         } catch (NullPointerException e) {
             Log.e(TAG, "Error: Start Activity using SplitActivity.getStartIntent()");
         }
-
-        initToolbar();
-        initRecyclerView();
     }
 
     private void initToolbar() {
@@ -52,7 +51,7 @@ public class SplitActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    private void initRecyclerView() {
+    private void initRecyclerView(List<PersonWithFood> mPersonWithFoodList) {
         Log.d(TAG, "initRecyclerView: called");
         RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         SplitListAdapter splitListAdapter = new SplitListAdapter(mPersonWithFoodList);
