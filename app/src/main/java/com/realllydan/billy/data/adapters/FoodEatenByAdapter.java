@@ -27,6 +27,7 @@ public class FoodEatenByAdapter extends ArrayAdapter<String> {
     }
 
     public void updateListWithAddedData(List<String> mPersonNamesList) {
+        if (mPersonNamesList == null) mPersonNamesList = new ArrayList<>();
         this.mPersonNamesList.clear();
         this.mPersonNamesList.addAll(mPersonNamesList);
         notifyDataSetChanged();

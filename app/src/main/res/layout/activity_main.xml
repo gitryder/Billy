@@ -16,21 +16,34 @@
         android:overScrollMode="never"
         app:layout_constraintBottom_toTopOf="@+id/b_get_split"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/title_add_person"
+                style="@style/HeaderTextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/title_add_person"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/title_add_person" />
 
             <EditText
                 android:id="@+id/et_person_name"
@@ -48,8 +61,8 @@
 
             <Button
                 android:id="@+id/b_add_person"
-                style="@style/ButtonTheme"
-                android:layout_width="wrap_content"
+                style="@style/AddButtonTheme"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
@@ -108,10 +121,20 @@
                 app:layout_constraintStart_toEndOf="@+id/et_food_price"
                 app:layout_constraintTop_toTopOf="@+id/et_food_price" />
 
+            <TextView
+                android:id="@+id/title_who_ate_it"
+                style="@style/HeaderTextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/title_who_ate_it"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_food_price" />
+
             <Button
                 android:id="@+id/b_add_food"
-                style="@style/ButtonTheme"
-                android:layout_width="130dp"
+                style="@style/AddButtonTheme"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -127,8 +150,9 @@
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_food_price" />
+                app:layout_constraintTop_toBottomOf="@+id/title_who_ate_it" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -137,10 +161,12 @@
 
     <Button
         android:id="@+id/b_get_split"
-        style="@style/ButtonTheme"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:text="@string/b_get_split"
+        android:background="@drawable/bg_get_split_button"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

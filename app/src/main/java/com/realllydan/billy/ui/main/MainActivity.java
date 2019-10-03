@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,18 +25,17 @@ import com.realllydan.billy.ui.split.SplitActivity;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements MainActivityView, AdapterView.OnItemSelectedListener {
+        implements MainActivityView {
 
     private static final String TAG = "MainActivity";
     private static final int DEFAULT_FOOD_TAX = 12;
-    private static final String PERSON_LIST_STATE_KEY = "person_list_state";
+    private static final String MAIN_ACTIVITY_STATE_DATA = "main_state_data_bundle";
 
     private EditText etPersonName, etFoodName, etFoodPrice, etFoodTax;
     private Button bAddPerson, bAddFood, bGetSplit;
-    private RecyclerView mRecyclerView;
     private Spinner mChooseEatenBy;
 
-    private MainActivityPresenter mainActivityPresenter;
+    private MainActivityPresenterState mainActivityPresenter;
     private PersonListAdapter personListAdapter;
     private FoodEatenByAdapter foodEatenByAdapter;
 
@@ -48,18 +45,21 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: called");
 
-        mainActivityPresenter = new MainActivityPresenter(this);
+        mainActivityPresenter = new MainActivityPresenterState(this);
 
         etPersonName = findViewById(R.id.et_person_name);
         etFoodName = findViewById(R.id.et_food_name);
         etFoodPrice = findViewById(R.id.et_food_price);
         etFoodTax = findViewById(R.id.et_food_tax);
-        mChooseEatenBy = findViewById(R.id.choose_eaten_by);
         bAddPerson = findViewById(R.id.b_add_person);
         bAddFood = findViewById(R.id.b_add_food);
         bGetSplit = findViewById(R.id.b_get_split);
 
         initViews();
+
+        if (savedInstanceState != null) {
+            mainActivityPresenter.restorePresenterState(savedInstanceState);
+        }
 
         bAddPerson.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +98,23 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mainActivityPresenter.savePresenterState(outState);
+    }
+
+    @Override
+    public void updateDataAdapters(List<String> mPersonNamesList) {
+        personListAdapter.updateListWithAddedData(mPersonNamesList);
+        foodEatenByAdapter.updateListWithAddedData(mPersonNamesList);
+    }
+
+    @Override
+    public void navigateToSplitActivity(List<PersonWithFood> mPersonWithFoodList) {
+        startActivity(SplitActivity.getStartIntent(this, mPersonWithFoodList));
+    }
+
     private void initViews() {
         initToolbar();
         initRecyclerView();
@@ -107,12 +124,13 @@ public class MainActivity extends AppCompatActivity
     private void initToolbar() {
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle(getString(R.string.app_name));
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle(getString(R.string.app_name));
     }
 
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: called");
-        mRecyclerView = findViewById(R.id.recycler_view);
+        RecyclerView mRecyclerView = findViewById(R.id.recycler_view);
         personListAdapter = new PersonListAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(personListAdapter);
@@ -120,6 +138,7 @@ public class MainActivity extends AppCompatActivity
 
     private void initSpinner() {
         Log.d(TAG, "initSpinner: called");
+        mChooseEatenBy = findViewById(R.id.choose_eaten_by);
         foodEatenByAdapter = new FoodEatenByAdapter(getApplicationContext(), R.layout.single_spinner_item);
         mChooseEatenBy.setAdapter(foodEatenByAdapter);
     }
@@ -152,38 +171,5 @@ public class MainActivity extends AppCompatActivity
 
     public void clearInputFields(EditText... editTexts) {
         for (EditText editText : editTexts) editText.setText("");
-    }
-
-    // TODO: Write code to save state
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    // TODO: Write code to restore state
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    @Override
-    public void updateDataAdapters(List<String> mPersonNamesList) {
-        personListAdapter.updateListWithAddedData(mPersonNamesList);
-        foodEatenByAdapter.updateListWithAddedData(mPersonNamesList);
-    }
-
-    @Override
-    public void navigateToSplitActivity(List<PersonWithFood> mPersonWithFoodList) {
-        startActivity(SplitActivity.getStartIntent(this, mPersonWithFoodList));
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

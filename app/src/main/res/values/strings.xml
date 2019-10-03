@@ -2,10 +2,12 @@
     <string name="app_name">Bill-y</string>
 
     <!--    Main Activity View-->
-    <string name="b_add_person">Add +</string>
+    <string name="title_add_person">Add all the people</string>
+    <string name="b_add_person">+</string>
     <string name="et_person_name">Person Name</string>
-    <string name="title_add_food">Add Food</string>
-    <string name="b_add_food">Add</string>
+    <string name="title_add_food">What was eaten?</string>
+    <string name="b_add_food">+</string>
+    <string name="title_who_ate_it">Who ate it?</string>
     <string name="et_food_name">Food Name</string>
     <string name="et_food_price">Price</string>
     <string name="et_food_tax">Tax (12% default)</string>

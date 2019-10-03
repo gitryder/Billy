@@ -1,10 +1,9 @@
 package com.realllydan.billy.ui.main;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 
-import com.realllydan.billy.SaveablePresenter;
+import com.realllydan.billy.StatefulPresenter;
 import com.realllydan.billy.data.models.Food;
 import com.realllydan.billy.data.models.PersonWithFood;
 
@@ -12,12 +11,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivityPresenter implements SaveablePresenter {
+public class MainActivityPresenterState implements StatefulPresenter {
 
-    private static final String TAG = "MainActivityPresenter";
-    public static final String PERSON_NAME_LIST_STATE = "person_name_list";
-    public static final String PERSON_WITH_FOOD_LIST_STATE = "person_with_food_list";
-    public static final String PERSON_WITH_FOOD_MAP_STATE = "person_with_food_map";
+    private static final String TAG = "MainActivityPresenterState";
+    private static final String PERSON_NAME_LIST_STATE = "person_name_list";
+    private static final String PERSON_WITH_FOOD_LIST_STATE = "person_with_food_list";
+    private static final String PERSON_WITH_FOOD_MAP_STATE = "person_with_food_map";
 
     private List<String> mPersonNamesList;
     private List<PersonWithFood> mPersonWithFoodList;
@@ -25,7 +24,7 @@ public class MainActivityPresenter implements SaveablePresenter {
 
     private MainActivityView view;
 
-    public MainActivityPresenter(MainActivityView view) {
+    public MainActivityPresenterState(MainActivityView view) {
         this.view = view;
         initDatasets();
     }
@@ -59,12 +58,14 @@ public class MainActivityPresenter implements SaveablePresenter {
         view.navigateToSplitActivity(mPersonWithFoodList);
     }
 
+    @Override
     public void savePresenterState(Bundle outState) {
         outState.putSerializable(PERSON_NAME_LIST_STATE, (ArrayList) mPersonNamesList);
         outState.putSerializable(PERSON_WITH_FOOD_LIST_STATE, (ArrayList) mPersonWithFoodList);
         outState.putSerializable(PERSON_WITH_FOOD_MAP_STATE, mFoodEaten);
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public void restorePresenterState(Bundle savedInstanceState) {
         mPersonNamesList = (List<String>) savedInstanceState.getSerializable(PERSON_NAME_LIST_STATE);

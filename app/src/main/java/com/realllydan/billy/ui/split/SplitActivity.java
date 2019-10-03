@@ -47,8 +47,10 @@ public class SplitActivity extends AppCompatActivity {
     private void initToolbar() {
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle(getString(R.string.title_split_details));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.title_split_details));
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void initRecyclerView(List<PersonWithFood> mPersonWithFoodList) {

@@ -23,6 +23,7 @@ public class PersonListAdapter extends RecyclerView.Adapter<PersonListAdapter.Vi
     }
 
     public void updateListWithAddedData(List<String> mPersonWithOrderedFoodList) {
+        if (mPersonWithOrderedFoodList == null) mPersonWithOrderedFoodList = new ArrayList<>();
         this.mPersonWithOrderedFoodList.clear();
         this.mPersonWithOrderedFoodList.addAll(mPersonWithOrderedFoodList);
         notifyDataSetChanged();
