@@ -16,6 +16,10 @@ public class PersonWithFood implements Parcelable {
     public PersonWithFood() {
     }
 
+    public PersonWithFood(String name) {
+        this.name = name;
+    }
+
     public PersonWithFood(String name, int splitCost, ArrayList<Food> foodEaten) {
         this.name = name;
         this.splitCost = splitCost;

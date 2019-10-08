@@ -7,4 +7,5 @@ import java.util.List;
 public interface MainActivityView {
     void updateDataAdapters(List<String> mPersonNamesList);
     void navigateToSplitActivity(List<PersonWithFood> mPersonWithFoodList);
+    void displayToastMessage(String message);
 }

@@ -2,8 +2,8 @@ package com.realllydan.billy.ui.main;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     private Button bAddPerson, bAddFood, bGetSplit;
     private Spinner mChooseEatenBy;
 
-    private MainActivityPresenterState mainActivityPresenter;
+    private MainActivityPresenter mainActivityPresenter;
     private PersonListAdapter personListAdapter;
     private FoodEatenByAdapter foodEatenByAdapter;
 
@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: called");
-
-        mainActivityPresenter = new MainActivityPresenterState(this);
 
         etPersonName = findViewById(R.id.et_person_name);
         etFoodName = findViewById(R.id.et_food_name);
@@ -56,10 +54,24 @@ public class MainActivity extends AppCompatActivity
         bGetSplit = findViewById(R.id.b_get_split);
 
         initViews();
+        initPresenter(savedInstanceState);
+        initClickListenersOnButtons();
+    }
 
-        if (savedInstanceState != null) {
-            mainActivityPresenter.restorePresenterState(savedInstanceState);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+
+            default:
+                break;
         }
+        return true;
+    }
+
+    private void initClickListenersOnButtons() {
 
         bAddPerson.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +110,14 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    private void initPresenter(Bundle savedInstanceState) {
+        mainActivityPresenter = new MainActivityPresenter(this);
+
+        if (savedInstanceState != null) {
+            mainActivityPresenter.restorePresenterState(savedInstanceState);
+        }
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -113,6 +133,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void navigateToSplitActivity(List<PersonWithFood> mPersonWithFoodList) {
         startActivity(SplitActivity.getStartIntent(this, mPersonWithFoodList));
+    }
+
+    @Override
+    public void displayToastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     private void initViews() {

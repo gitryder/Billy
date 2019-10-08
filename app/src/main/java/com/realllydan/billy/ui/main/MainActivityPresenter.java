@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivityPresenterState implements StatefulPresenter {
+public class MainActivityPresenter implements StatefulPresenter {
 
-    private static final String TAG = "MainActivityPresenterState";
+    private static final String TAG = "MainActivityPresenter";
     private static final String PERSON_NAME_LIST_STATE = "person_name_list";
     private static final String PERSON_WITH_FOOD_LIST_STATE = "person_with_food_list";
     private static final String PERSON_WITH_FOOD_MAP_STATE = "person_with_food_map";
@@ -24,7 +24,7 @@ public class MainActivityPresenterState implements StatefulPresenter {
 
     private MainActivityView view;
 
-    public MainActivityPresenterState(MainActivityView view) {
+    public MainActivityPresenter(MainActivityView view) {
         this.view = view;
         initDatasets();
     }
@@ -37,15 +37,20 @@ public class MainActivityPresenterState implements StatefulPresenter {
 
     public void onAddPersonClicked(String personName) {
         Log.d(TAG, "addNewPerson: called");
-        mFoodEaten.put(personName, new PersonWithFood());
+        mFoodEaten.put(personName, new PersonWithFood(personName));
         mPersonNamesList.add(personName);
         view.updateDataAdapters(mPersonNamesList);
     }
 
     public void onAddFoodClicked(Food food, String personName) {
         Log.d(TAG, "addFoodToPerson: called");
-        mFoodEaten.get(personName).setName(personName);
-        mFoodEaten.get(personName).addFoodEaten(food);
+
+        PersonWithFood personWithFood = mFoodEaten.get(personName);
+        if (personWithFood != null) {
+            personWithFood.addFoodEaten(food);
+        } else {
+            view.displayToastMessage("Sorry! The person you're trying to add food to, doesn't exist.");
+        }
     }
 
     public void onGetSplitClicked() {

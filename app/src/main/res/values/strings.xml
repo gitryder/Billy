@@ -26,4 +26,9 @@
     <!--    Split Activity View-->
     <string name="title_split_details">Split Details</string>
 
+    <!--    Error Strings-->
+    <string name="error_non_existent_person">
+        Sorry, the person you\'re trying to add food to doesn\'t exist.
+    </string>
+
 </resources>
