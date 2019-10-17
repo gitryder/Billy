@@ -1,28 +1,34 @@
 <resources>
-    <string name="app_name">Billy</string>
+    <string name="app_name">Bill-y</string>
 
     <!--    Main Activity View-->
-    <string name="title_add_billis">Billis</string>
-    <string name="b_add_billi">Add +</string>
-    <string name="et_billi_name">Billi Name</string>
-    <string name="title_add_dish">Add Dish</string>
-    <string name="b_add_dish">Add Dish</string>
-    <string name="et_dish_name">Dish Name</string>
-    <string name="et_dish_price">Price</string>
-    <string name="et_dish_tax">Tax (12% default)</string>
-    <string name="dish_eaten_by">Dish Eaten By</string>
+    <string name="title_add_person">Add all the people</string>
+    <string name="b_add_person">+</string>
+    <string name="et_person_name">Person Name</string>
+    <string name="title_add_food">What was eaten?</string>
+    <string name="b_add_food">+</string>
+    <string name="title_who_ate_it">Who ate it?</string>
+    <string name="et_food_name">Food Name</string>
+    <string name="et_food_price">Price</string>
+    <string name="et_food_tax">Tax (12% default)</string>
+    <string name="food_eaten_by">Food Eaten By</string>
     <string name="b_get_split">Get Split</string>
 
 
-    <!--    Single Billi List Item-->
-    <string name="billi_name">Billi Name</string>
+    <!--    Single PersonWithFood List Item-->
+    <string name="person_name">Person Name</string>
 
     <!--    Single Split Details Item-->
-    <string name="billi_split_amount">560</string>
+    <string name="person_split_amount">560</string>
     <string name="title_food_eaten">Food Eaten:</string>
-    <string name="billi_food_eaten">Chicken (560)</string>
+    <string name="person_food_eaten">Chicken (560)</string>
 
     <!--    Split Activity View-->
     <string name="title_split_details">Split Details</string>
+
+    <!--    Error Strings-->
+    <string name="error_non_existent_person">
+        Sorry, the person you\'re trying to add food to doesn\'t exist.
+    </string>
 
 </resources>

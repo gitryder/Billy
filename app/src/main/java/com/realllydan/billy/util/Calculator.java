@@ -1,23 +1,32 @@
 package com.realllydan.billy.util;
 
-import com.realllydan.billy.models.Dish;
+import com.realllydan.billy.data.models.Food;
 
 public class Calculator {
 
+    private static final int DEFAULT_FOOD_TAX = 12;
+
     /**
-     * @return the concatenated string of dishName and dishPrice after
-     * calculating the tax on the dish
+     * @param food the food of which String is requested
      *
-     * @param dish the dish of which String is requested
+     * @return the concatenated string of dishName and foodPrice after
+     * calculating the tax on the food
      * */
 
-    public static String getCalculatedDishString(Dish dish) {
-        long taxInclusiveDishCost = dish.getDishPrice() * dish.getDishTax() / 100;
-        return dish.getDishName() + " (₹" + dish.getDishPrice() + " + ₹" + taxInclusiveDishCost + ")";
+    public static String getCalculatedDishString(Food food) {
+        long taxInclusiveDishCost = food.getFoodPrice() * food.getFoodTax() / 100;
+        return food.getFoodName() + " (₹" + food.getFoodPrice() + " + ₹" + taxInclusiveDishCost + ")";
     }
 
-    public static int getTaxInclusivePrice(int dishPrice, int dishTax) {
-        return dishPrice += (dishPrice * dishTax / 100);
+    /**
+     * @param foodPrice the price of the food of which price is expected
+     * @param foodTax the tax of the food of which price is expected
+     *
+     * @return the tax inclusive price of the food
+     * */
+
+    public static int getTaxInclusivePrice(int foodPrice, int foodTax) {
+        return foodPrice += (foodPrice * foodTax / 100);
     }
 
 }

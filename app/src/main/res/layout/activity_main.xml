@@ -16,24 +16,37 @@
         android:overScrollMode="never"
         app:layout_constraintBottom_toTopOf="@+id/b_get_split"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/title_add_person"
+                style="@style/HeaderTextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/title_add_person"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/title_add_person" />
 
             <EditText
-                android:id="@+id/et_billi_name"
+                android:id="@+id/et_person_name"
                 style="@style/EditTextTheme"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
@@ -41,34 +54,34 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="@string/et_billi_name"
-                app:layout_constraintEnd_toStartOf="@+id/b_add_billi"
+                android:hint="@string/et_person_name"
+                app:layout_constraintEnd_toStartOf="@+id/b_add_person"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
 
             <Button
-                android:id="@+id/b_add_billi"
-                style="@style/ButtonTheme"
-                android:layout_width="wrap_content"
+                android:id="@+id/b_add_person"
+                style="@style/AddButtonTheme"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/b_add_billi"
+                android:text="@string/b_add_person"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
 
             <TextView
-                android:id="@+id/title_add_dish"
+                android:id="@+id/title_add_food"
                 style="@style/HeaderTextTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/title_add_dish"
+                android:text="@string/title_add_food"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_billi_name" />
+                app:layout_constraintTop_toBottomOf="@+id/et_person_name" />
 
             <EditText
-                android:id="@+id/et_dish_name"
+                android:id="@+id/et_food_name"
                 style="@style/EditTextTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -76,46 +89,56 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="@string/et_dish_name"
+                android:hint="@string/et_food_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_add_dish" />
+                app:layout_constraintTop_toBottomOf="@+id/title_add_food" />
 
             <EditText
-                android:id="@+id/et_dish_price"
+                android:id="@+id/et_food_price"
                 style="@style/EditTextTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:ems="10"
-                android:hint="@string/et_dish_price"
+                android:hint="@string/et_food_price"
                 android:inputType="number"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_dish_name" />
+                app:layout_constraintTop_toBottomOf="@+id/et_food_name" />
 
             <EditText
-                android:id="@+id/et_dish_tax"
+                android:id="@+id/et_food_tax"
                 style="@style/EditTextTheme"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:ems="10"
-                android:hint="@string/et_dish_tax"
+                android:hint="@string/et_food_tax"
                 android:inputType="number"
-                app:layout_constraintBottom_toBottomOf="@+id/et_dish_price"
+                app:layout_constraintBottom_toBottomOf="@+id/et_food_price"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_dish_price"
-                app:layout_constraintTop_toTopOf="@+id/et_dish_price" />
+                app:layout_constraintStart_toEndOf="@+id/et_food_price"
+                app:layout_constraintTop_toTopOf="@+id/et_food_price" />
+
+            <TextView
+                android:id="@+id/title_who_ate_it"
+                style="@style/HeaderTextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/title_who_ate_it"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_food_price" />
 
             <Button
-                android:id="@+id/b_add_dish"
-                style="@style/ButtonTheme"
-                android:layout_width="130dp"
+                android:id="@+id/b_add_food"
+                style="@style/AddButtonTheme"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/b_add_dish"
+                android:text="@string/b_add_food"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/choose_eaten_by" />
 
@@ -127,8 +150,9 @@
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_dish_price" />
+                app:layout_constraintTop_toBottomOf="@+id/title_who_ate_it" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -137,10 +161,12 @@
 
     <Button
         android:id="@+id/b_get_split"
-        style="@style/ButtonTheme"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:text="@string/b_get_split"
+        android:background="@drawable/bg_get_split_button"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
