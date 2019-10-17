@@ -36,7 +36,6 @@ public class MainActivityPresenter implements StatefulPresenter {
     }
 
     public void onAddPersonClicked(String personName) {
-        Log.d(TAG, "addNewPerson: called");
         mFoodEaten.put(personName, new PersonWithFood(personName));
         mPersonNamesList.add(personName);
         view.updateDataAdapters(mPersonNamesList);
